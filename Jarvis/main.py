@@ -2,6 +2,7 @@ import speech_recognition as sr
 import pyttsx3
 import pywhatkit
 import datetime
+import wikipedia
 
 listener = sr.Recognizer()
 engine = pyttsx3.init()
@@ -41,5 +42,11 @@ def run_jarvis():
         time = datetime.datetime.now().strftime("%I:%M %p")
         print(time)
         talk('the current time is ' + time)
+
+    elif 'who is' in command:
+        person = command.replace('who is', '')
+        info = wikipedia.summary(person, 1)
+        print(info)
+        talk(info)
 
 run_jarvis()
