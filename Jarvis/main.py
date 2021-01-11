@@ -8,7 +8,13 @@ import pyjokes
 listener = sr.Recognizer()
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
-engine.setProperty('voices', voices[0].id)
+engine.setProperty('voice', voices[0].id)
+
+rate = engine.getProperty('rate')
+engine.setProperty('rate', 175)
+
+volume = engine.getProperty('volume')
+engine.setProperty('volume', 1.0)
 
 
 def talk(text):
@@ -53,6 +59,12 @@ def run_jarvis():
     elif 'joke' in command:
         talk(pyjokes.get_joke())
 
+    elif 'stop' in command:
+        exit(1)
+
+    else:
+        talk('Please say the command again')
 
 
-run_jarvis()
+while True:
+    run_jarvis()
