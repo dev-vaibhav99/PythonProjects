@@ -3,6 +3,7 @@ import pyttsx3
 import pywhatkit
 import datetime
 import wikipedia
+import pyjokes
 
 listener = sr.Recognizer()
 engine = pyttsx3.init()
@@ -48,5 +49,10 @@ def run_jarvis():
         info = wikipedia.summary(person, 1)
         print(info)
         talk(info)
+
+    elif 'joke' in command:
+        talk(pyjokes.get_joke())
+
+
 
 run_jarvis()
