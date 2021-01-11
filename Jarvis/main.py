@@ -1,6 +1,7 @@
 import speech_recognition as sr
 import pyttsx3
 import pywhatkit
+import datetime
 
 listener = sr.Recognizer()
 engine = pyttsx3.init()
@@ -22,8 +23,7 @@ def take_command():
             command = command.lower()
             if 'jarvis' in command:
                 command = command.replace('jarvis', "")
-                talk(command)
-                print(command)
+
     except:
         pass
 
@@ -37,5 +37,9 @@ def run_jarvis():
         talk("plying" + song)
         pywhatkit.playonyt(song)
 
+    elif 'time' in command:
+        time = datetime.datetime.now().strftime("%I:%M %p")
+        print(time)
+        talk('the current time is ' + time)
 
 run_jarvis()
