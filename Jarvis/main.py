@@ -6,6 +6,8 @@ try:
         print("Listening...")
         voice = listener.listen(source)
         command = listener.recognize_google(voice)
-        print(command)
+        command = command.lower()
+        if 'jarvis' in command:
+            print(command)
 except:
     pass
